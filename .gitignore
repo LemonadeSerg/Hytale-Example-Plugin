@@ -33,3 +33,9 @@ build/
 
 ### Misc ###
 /run/
+*.bak
+*.lck
+*.log
+*.tmp
+Thumbs.db
+
