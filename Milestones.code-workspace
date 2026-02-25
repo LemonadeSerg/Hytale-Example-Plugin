@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Hytale/install/release/package/game/latest/Assets"
+		},
+		{
+			"path": "C:/Users/chris/Downloads/AdminUI-main"
+		},
+		{
+			"path": "../Hytale/install/release/package/game/latest/Server/HytaleServer-sources"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}

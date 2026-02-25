@@ -1,16 +1,24 @@
-# Hytale Plugin Template
+﻿# Milestones 2.0
 
-A template for Hytale java plugins. Created by [Up](https://github.com/UpcraftLP), and slightly modified by Kaupenjoe. 
+Base project scaffold for a Hytale plugin.
 
-### Configuring the Template
-If you for example installed the game in a non-standard location, you will need to tell the project about that.
-The recommended way is to create a file at `%USERPROFILE%/.gradle/gradle.properties` to set these properties globally.
+## Status
 
-```properties
-# Set a custom game install location
-hytale.install_dir=path/to/Hytale
+This repository has been reset to a clean baseline.
 
-# Speed up the decompilation process significantly, by only including the core hytale packages.
-# Recommended if decompiling the game takes a very long time on your PC.
-hytale.decompile_partial=true
-```
+## Getting Started
+
+1. Build: `./gradlew build`
+2. Run dev tasks as needed
+3. Implement plugin logic in `src/main/java`
+
+## Documentation
+
+- Development guide: `docs/guides/DEVELOPMENT.md`
+- Milestone creation guide: `docs/guides/MILESTONE_CREATION.md`
+- API reference: `docs/reference/API_REFERENCE.md`
+- Changelog: `docs/release/CHANGELOG.md`
+
+## License
+
+See `LICENSE.md`.

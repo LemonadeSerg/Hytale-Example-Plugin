@@ -3,8 +3,8 @@ plugins {
     id("hytale-mod") version "0.+"
 }
 
-group = "com.example"
-version = "0.1.0"
+group = "LemonadeSergeant"
+version = "1.1.0"
 val javaVersion = 25
 
 repositories {
@@ -50,7 +50,8 @@ tasks.named<ProcessResources>("processResources") {
         "plugin_website" to findProperty("plugin_website"),
 
         "plugin_main_entrypoint" to findProperty("plugin_main_entrypoint"),
-        "plugin_author" to findProperty("plugin_author")
+        "plugin_author" to findProperty("plugin_author"),
+        "includes_asset_pack" to true
     )
 
     filesMatching("manifest.json") {
