@@ -1,0 +1,28 @@
+package com.lemonadesergeant.milestones.logging;
+
+public enum LogSource {
+    PLUGIN,
+
+    BLOCK_BREAK,
+    BLOCK_PLACE,
+    BLOCK_USE,
+
+    CRAFT_RECIPE,
+
+    DAMAGE,
+    ENTITY_KILL,
+
+    INTERACTIVELY_PICKUP,
+    ITEM_PICKUP,
+
+    ZONE_AND_BIOME_DISCOVERY,
+
+    MILESTONE_STATE,
+    MILESTONE_UPDATE,
+    STATS_MANAGER,
+    STATS_HELPER,
+    MILESTONE_MANAGER,
+    PROGRESS_HELPER,
+    DATA_STORAGE,
+    PLAYER_INIT
+}

@@ -18,6 +18,7 @@ This repository has been reset to a clean baseline.
 - Milestone creation guide: `docs/guides/MILESTONE_CREATION.md`
 - AI workflow guidance: `docs/guides/AI_WORKFLOW_GUIDANCE.md`
 - API reference: `docs/reference/API_REFERENCE.md`
+- Modding event API: `docs/reference/MODDING_EVENT_API.md`
 - Changelog: `docs/release/CHANGELOG.md`
 
 ## Source References

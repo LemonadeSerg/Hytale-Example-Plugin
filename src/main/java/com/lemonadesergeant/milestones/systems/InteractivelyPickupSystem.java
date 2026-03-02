@@ -9,7 +9,7 @@ import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.component.system.EntityEventSystem;
 import com.hypixel.hytale.server.core.entity.entities.Player;
-import com.hypixel.hytale.server.core.event.events.ecs.BreakBlockEvent;
+import com.hypixel.hytale.server.core.event.events.ecs.InteractivelyPickupItemEvent;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.lemonadesergeant.milestones.data.GameEventType;
 import com.lemonadesergeant.milestones.data.NormalizedGameEvent;
@@ -17,13 +17,11 @@ import com.lemonadesergeant.milestones.logging.LogStage;
 import com.lemonadesergeant.milestones.logging.LogSource;
 import com.lemonadesergeant.milestones.logging.PluginLog;
 import com.lemonadesergeant.milestones.managers.EventForwardingManager;
+public class InteractivelyPickupSystem  extends EntityEventSystem<EntityStore, InteractivelyPickupItemEvent> {
 
-public class BlockBreakSystem extends EntityEventSystem<EntityStore, BreakBlockEvent>{
-
-
-    public BlockBreakSystem() {
-        super(BreakBlockEvent.class);
-        PluginLog.info(LogSource.BLOCK_BREAK, LogStage.SETUP, "system=BlockBreakSystem action=init eventType=%s", BreakBlockEvent.class.getName());
+    public InteractivelyPickupSystem() {
+        super(InteractivelyPickupItemEvent.class);
+        PluginLog.info(LogSource.INTERACTIVELY_PICKUP, LogStage.SETUP, "system=InteractivelyPickupSystem action=init eventType=%s", InteractivelyPickupItemEvent.class.getName());
     }
 
     @Override
@@ -33,25 +31,27 @@ public class BlockBreakSystem extends EntityEventSystem<EntityStore, BreakBlockE
 
     @Override
         public void handle(int entityIndex, @Nonnull ArchetypeChunk<EntityStore> chunk, @Nonnull Store<EntityStore> store,
-            @Nonnull CommandBuffer<EntityStore> commandBuffer, @Nonnull BreakBlockEvent event) {
+            @Nonnull CommandBuffer<EntityStore> commandBuffer, @Nonnull InteractivelyPickupItemEvent event) {
         SystemPlayerContextResolver.PlayerContext playerContext = SystemPlayerContextResolver.resolve(chunk, entityIndex);
 
         PluginLog.info(
-            LogSource.BLOCK_BREAK,
+            LogSource.INTERACTIVELY_PICKUP,
             LogStage.HANDLE,
-            "component=BlockBreakSystem action=handle playerId=%s targetId=%s itemId=%s",
+            "component=InteractivelyPickupSystem action=handle playerId=%s itemId=%s amount=%s blockKey=%s",
             playerContext.playerIdOrEntity(entityIndex),
-            event.getBlockType() == null ? null : event.getBlockType().getId(),
-            SystemEventValueResolver.resolveItemId(event.getItemInHand())
+            event.getItemStack() == null ? null : event.getItemStack().getItemId(),
+            event.getItemStack() == null ? 0 : event.getItemStack().getQuantity(),
+            event.getItemStack() == null ? null : event.getItemStack().getBlockKey()
         );
 
         EventForwardingManager.forward(
             store,
             playerContext.playerRef,
-            NormalizedGameEvent.of(GameEventType.BLOCK_BREAK)
-                .put("targetId", event.getBlockType() == null ? null : event.getBlockType().getId())
+            NormalizedGameEvent.of(GameEventType.INTERACTIVELY_PICKUP)
                 .put("playerId", playerContext.playerIdOrEntity(entityIndex))
-                .put("itemId", SystemEventValueResolver.resolveItemId(event.getItemInHand()))
+                .put("itemId", event.getItemStack() == null ? null : event.getItemStack().getItemId())
+                .put("amount", event.getItemStack() == null ? 0 : event.getItemStack().getQuantity())
+                .put("blockKey", event.getItemStack() == null ? null : event.getItemStack().getBlockKey())
         );
     }
 }

@@ -1,13 +1,15 @@
 ﻿# API Reference
 
-Base documentation placeholder.
+## Documentation split
+
+- Stats API and integration guides: `docs/stats/README.md`
+- Milestone feature docs and authoring references: `docs/milestones/README.md`
 
 ## Purpose
 
 Document public classes, extension points, and integration examples.
 
-## TODO
+## Current reference entry points
 
-- Core services
-- Data models
-- Event/system hooks
+- `docs/reference/MODDING_EVENT_API.md`
+- `docs/stats/INTERACTIONS_RECOMMENDATIONS.md`
